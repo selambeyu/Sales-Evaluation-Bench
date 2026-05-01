@@ -1,0 +1,42 @@
+{
+  "metrics": {
+    "total_held_out_tasks": 31,
+    "tasks_with_overlap": 31,
+    "overlap_percentage": 100.0,
+    "n_gram_size": 8
+  },
+  "contaminated_task_ids": [
+    "synth_8",
+    "synth_33",
+    "prog_13",
+    "prog_5",
+    "synth_43",
+    "prog_73",
+    "synth_55",
+    "prog_26",
+    "trace_98d3ecd5749846fa9cd5f1b152c99443",
+    "prog_57",
+    "synth_25",
+    "prog_42",
+    "synth_18",
+    "prog_36",
+    "hand_004",
+    "synth_40",
+    "prog_45",
+    "prog_41",
+    "prog_9",
+    "trace_0bf191d4b59c4552bd64c5ba85622e11",
+    "trace_f85ade3de5f94f769c2b5b2c7623612c",
+    "synth_19",
+    "prog_8",
+    "synth_50",
+    "prog_12",
+    "prog_21",
+    "prog_43",
+    "prog_48",
+    "prog_56",
+    "trace_37dcfccd677f4d22b89dcc91f1adb4d8",
+    "prog_14"
+  ],
+  "status": "FAIL"
+}
