@@ -1,0 +1,103 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Tenacious-Bench Task Schema",
+  "description": "A schema for evaluating B2B sales outreach drafts against the Tenacious Style Guide.",
+  "type": "object",
+  "required": [
+    "task_id",
+    "source_mode",
+    "input",
+    "candidate_output",
+    "rubric",
+    "expected_failure_mode"
+  ],
+  "properties": {
+    "task_id": {
+      "type": "string",
+      "description": "Unique identifier for the evaluation task."
+    },
+    "source_mode": {
+      "type": "string",
+      "enum": ["trace-derived", "programmatic", "multi-llm-synthesis", "hand-authored-adversarial"],
+      "description": "How this task was generated."
+    },
+    "input": {
+      "type": "object",
+      "description": "The context provided to the agent before generating the output.",
+      "required": ["hiring_signal_brief", "bench_summary"],
+      "properties": {
+        "hiring_signal_brief": {
+          "type": "object",
+          "description": "The prospect's firmographic and public signal data.",
+          "properties": {
+            "company_name": { "type": "string" },
+            "icp_segment": { "type": "string" },
+            "signals": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "signal_type": { "type": "string" },
+                  "value": { "type": "string" },
+                  "confidence": { "type": "string", "enum": ["High", "Medium", "Low"] }
+                }
+              }
+            },
+            "ai_maturity_score": { "type": "integer", "minimum": 0, "maximum": 3 },
+            "ai_maturity_confidence": { "type": "string", "enum": ["High", "Medium", "Low"] }
+          }
+        },
+        "bench_summary": {
+          "type": "object",
+          "description": "Current availability of Tenacious engineers.",
+          "additionalProperties": { "type": "integer" }
+        },
+        "prior_thread": {
+          "type": "string",
+          "description": "Any previous emails in the thread. Null if cold outreach."
+        }
+      }
+    },
+    "candidate_output": {
+      "type": "string",
+      "description": "The generated email draft to be evaluated."
+    },
+    "expected_failure_mode": {
+      "type": "string",
+      "description": "The specific failure mode this task is designed to test (e.g., 'Signal Over-Claiming', 'Condescending Tone'). Use 'None' for good drafts."
+    },
+    "rubric": {
+      "type": "object",
+      "description": "The Tone-Preservation Check Specification for this specific task.",
+      "required": [
+        "direct",
+        "grounded",
+        "honest",
+        "professional",
+        "non_condescending"
+      ],
+      "properties": {
+        "direct": {
+          "type": "string",
+          "description": "Criteria for a 5/5 Direct score."
+        },
+        "grounded": {
+          "type": "string",
+          "description": "Criteria for a 5/5 Grounded score."
+        },
+        "honest": {
+          "type": "string",
+          "description": "Criteria for a 5/5 Honest score."
+        },
+        "professional": {
+          "type": "string",
+          "description": "Criteria for a 5/5 Professional score."
+        },
+        "non_condescending": {
+          "type": "string",
+          "description": "Criteria for a 5/5 Non-condescending score."
+        }
+      }
+    }
+  }
+}
