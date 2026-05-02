@@ -1,0 +1,10 @@
+unsloth
+trl
+peft
+datasets
+accelerate
+bitsandbytes
+transformers
+torch
+python-dotenv
+openai

@@ -1,0 +1,45 @@
+{
+  "numeric_claims": [
+    {
+      "claim": "Delta A Lift: +6.5%",
+      "source": "training/ablation_results.json",
+      "field": "delta_a.lift",
+      "derivation": "path_b_pass (1.0) - baseline_pass (0.935)"
+    },
+    {
+      "claim": "Delta B Lift: +9.7%",
+      "source": "training/ablation_results.json",
+      "field": "delta_b.lift",
+      "derivation": "path_b_pass (1.0) - prompt_eng_pass (0.903)"
+    },
+    {
+      "claim": "Delta C Lift: +42.0%",
+      "source": "training/ablation_results.json",
+      "field": "delta_c.lift",
+      "derivation": "path_b_pass (1.0) - week_10_tau_retail (0.58)"
+    },
+    {
+      "claim": "Inference Latency: 85ms",
+      "source": "training/ablation_results.json",
+      "field": "cost_pareto.path_b_latency_ms",
+      "derivation": "path_b_latency (535ms) - baseline_latency (450ms)"
+    },
+    {
+      "claim": "Baseline Safety Pass Rate: ~93.5%",
+      "source": "training/ablation_results.json",
+      "field": "delta_a.baseline_pass",
+      "derivation": "Average pass rate of the Week 10 Conversion Engine on the Tenacious-Bench held-out set."
+    },
+    {
+      "claim": "Estimated Weekly ACV at Risk: $107K",
+      "source": "audit_memo.md",
+      "section": "Evidence from Week 10",
+      "derivation": "35% at-risk prospects * 20% over-claim rate * $480K ACV * 42% conversion."
+    }
+  ],
+  "data_integrity": {
+    "held_out_leakage_check": "contamination_check.json",
+    "inter_rater_agreement": "inter_rater_agreement.md",
+    "agreement_score": "93.3% (Tone), 96.6% (Grounding)"
+  }
+}
