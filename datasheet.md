@@ -45,6 +45,8 @@ For Trace-derived tasks, raw logs were parsed and sensitive PII was scrubbed bef
 **Was any preprocessing/cleaning/labeling of the data done?**
 All tasks generated via LLM synthesis were strictly filtered using an LLM-as-a-judge (`scoring_evaluator.py`) to ensure quality before inclusion. Contamination checks (8-gram overlap) were run to ensure absolute isolation of the held-out set.
 
+For the **Training Partition**, we generated a corresponding set of **Preference Pairs (chosen, rejected)**. Failed tasks were rewritten by a dev-tier model (`google/gemini-2.5-flash-8b`) to adhere to the Tenacious Style Guide, and these rewrites were validated against the `scoring_evaluator.py` to ensure they scored ≥ 4/5 on all markers. These validated rewrites became the "chosen" responses, while the original failed outputs were designated as "rejected."
+
 ## Uses
 **Has the dataset been used for any tasks already?**
 This dataset is intended to be used to train a Preference-Tuned Judge (critic model) via SimPO/ORPO to reject over-claiming drafts.
