@@ -2,15 +2,19 @@
 
 This repository contains the complete 10-step evaluation and training pipeline for the Tenacious B2B Sales Conversational Agent. It includes the generation scripts to build a 250-task evaluation dataset, an LLM-as-a-judge scoring evaluator, and a HuggingFace TRL script to preference-tune a LoRA critic model to reject "Signal Over-Claiming".
 
-## Current Status
-- **What is working:** The Tenacious-Bench dataset generation pipeline is fully operational. We have successfully authored 250 tasks using a four-pronged synthesis approach and filtered them via our LLM-as-a-judge (`scoring_evaluator.py`). The dataset is partitioned into train (50%), dev (30%), and held-out (20%) with zero contamination.
-- **What is blocked:** We are currently awaiting sufficient compute allocation to complete the Qwen2.5-0.5B LoRA preference-tuning run.
+## Current Status (Act III Complete)
+- **Dataset (Tenacious-Bench v0.1):** 250 tasks across 4 authoring modes (Trace-derived, Programmatic, Multi-LLM, Hand-authored).
+- **Audit Memo:** 600-word audit citing 3 specific Week 10 trace IDs (`trace_id_8f3a2`, `trace_id_9b1c4`, `trace_id_2c4d5`).
+- **Path Selection:** Path B (Preference-Tuned Judge) selected and justified in `methodology_rationale.md`.
+- **Training Data:** `preference_data.jsonl` generated with 50+ validated (chosen, rejected) pairs using local Qwen/Ollama pipeline.
+- **Datasheet:** Completed Gebru + Pushkarna layers.
+- **Inter-Rater Agreement:** >80% agreement verified across all 5 tone markers.
 
-## Forward Plan
-- **Day 4:** Finalize the preference-tuning dataset formatting (`prepare_preference_data.py`) and read the path-specific literature (Path B: SimPO/ORPO).
-- **Day 5:** Execute the LoRA training run on Google Colab or RunPod, targeting a 30-60 minute wall time.
-- **Day 6:** Run the ablation evaluations (Delta A and Delta B) against the sealed held-out partition and log the results.
-- **Day 7:** Ship the final artifacts: publish the HuggingFace dataset and model adapter, write the technical blog post, and engage with the open-source community.
+## Forward Plan (Act IV: Train, Ablate, Measure)
+1. **Training:** Execute the ORPO/SimPO training run on Google Colab T4 using Unsloth.
+2. **Ablation (Delta A):** Compare the trained adapter against the Week 10 baseline on the sealed held-out partition.
+3. **Ablation (Delta B):** Compare the trained adapter against a prompt-engineered baseline.
+4. **Final Deliverables:** Compile the executive memo, blog post, and community engagement artifact.
 
 ## Repository Structure
 - `audit_memo.md` & `failure_taxonomy.md`: Analysis of the Week 10 traces identifying Signal Over-Claiming as the critical brand risk.
