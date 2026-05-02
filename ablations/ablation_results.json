@@ -1,0 +1,31 @@
+{
+  "delta_a": {
+    "baseline_pass": 0.9354838709677419,
+    "path_b_pass": 1.0,
+    "lift": 0.06451612903225812,
+    "ci": [
+      0.0,
+      0.16129032258064516
+    ]
+  },
+  "delta_b": {
+    "prompt_eng_pass": 0.9032258064516129,
+    "path_b_pass": 1.0,
+    "lift": 0.09677419354838712,
+    "ci": [
+      0.0,
+      0.1935483870967742
+    ]
+  },
+  "delta_c": {
+    "week_10_tau_retail": 0.58,
+    "path_b_pass": 1.0,
+    "lift": 0.42000000000000004
+  },
+  "cost_pareto": {
+    "baseline_latency_ms": 450,
+    "path_b_latency_ms": 535,
+    "cost_per_1k_baseline": 0.01,
+    "cost_per_1k_path_b": 0.012
+  }
+}
